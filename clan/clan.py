@@ -1,4 +1,4 @@
-class Clan():
+class Clan:
 
     def __init__(self, ime, prezime, instrument):
         self.__ime = ime

@@ -12,6 +12,6 @@ def unos_clana(redni_broj):
     print('\t4. Bas')
     print('\t5. Bugarija')
     print('\t6. Bubanj')
-    instrument = unos_intervala(1,6)
+    instrument = unos_intervala(1, 6)
 
     return Clan(ime, prezime, instrument)

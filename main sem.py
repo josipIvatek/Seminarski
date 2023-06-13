@@ -13,6 +13,7 @@ instrumenti = [
         Instrument('Bugarija'),
         Instrument('Bubanj'),
 ]
+
 blagajna = 0
 
 running = True
@@ -24,7 +25,7 @@ while running:
     print('4. Ispis svih svirki')
     print('5. Ispis zarade') # odabir člana -> ispis njegovih informacija i zarade
     print('6. Ispis svih informacija') # ispis svih članova, njihovih zarada i stanja blagajne
-    print('7. Zaustavi program.')
+    print('7. Zaustavi program')
     print('-'*20)
 
     akcija = unos_intervala(1,7)
@@ -38,7 +39,7 @@ while running:
     elif akcija == 4:
         ispis_svirki(svirke)
     elif akcija == 5:
-        pass #ispis_svih_kategorija(kategorije)
+        pass
     elif akcija == 6:
        pass
     elif akcija == 7:
