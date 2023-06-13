@@ -1,8 +1,8 @@
 class Svirka:
 
     def __init__(self, datum, opis, cijena):
-        self.datum = datum
-        self.opis = opis
+        self.__datum = datum
+        self.__opis = opis
         self.__cijena = cijena
 
 
