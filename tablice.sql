@@ -30,3 +30,6 @@ INSERT INTO instrument (naziv) VALUES
     ('Bas'),
     ('Bugarija'),
     ('Bubanj');
+
+INSERT INTO blagajna (blagajna, ukupna_zarada)  VALUES
+    ('0','0');
