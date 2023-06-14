@@ -3,21 +3,26 @@ from clan import unos_clana, ispis_svih_clanova
 from svirka import unos_svirke, ispis_svih_svirki
 import sqlite3
 
-fd = open('tablice.sql', 'r')
-sqlFile = fd.read()
-fd.close()
-sqlCommands = sqlFile.split(';')
+
 con = sqlite3.connect("faks.db")
 cur = con.cursor()
-for command in sqlCommands:
-    con.execute(command)
-    con.commit()
+query = """ 
+
+SELECT * FROM clan;
+
+"""
+
+data = cur.execute(query).fetchall()
+
+for d in data:
+    print(d)
 
 
 clanovi = []
 svirke = []
 blagajna = 0
 ukupna_zarada = 0
+
 
 running = True
 while running:
@@ -35,6 +40,15 @@ while running:
 
     if akcija == 1:
        clanovi.append(unos_clana(len(clanovi)+1))
+
+       query = """ 
+
+           INSERT INTO clan (ime, prezime, id_instrumenta)
+           VALUES (f"{clanovi[len(clanovi)-1].ime}", f"{clanovi[len(clanovi)-1].prezime}", f"{clanovi[len(clanovi)-1].instrument}")
+
+           """
+       cur.execute(query)
+       con.commit()
     elif akcija == 2:
         svirke.append(unos_svirke(len(svirke)+1))
         ukupna_zarada = ukupna_zarada + svirke[len(svirke)-1].cijena
@@ -57,3 +71,4 @@ while running:
         print(f'{stanje_blagajne}')
     elif akcija == 7:
         running = False
+

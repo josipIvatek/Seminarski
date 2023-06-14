@@ -2,7 +2,7 @@ CREATE TABLE clan (
 id_clana INTEGER PRIMARY KEY AUTOINCREMENT,
 ime CHAR(50) NOT NULL,
 prezime CHAR(50) NOT NULL,
-id_instrumenta TINYINT,
+id_instrumenta TINYINT
 );
 
 CREATE TABLE instrument (
