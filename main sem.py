@@ -6,16 +6,6 @@ import sqlite3
 
 con = sqlite3.connect("faks.db")
 cur = con.cursor()
-query = """ 
-
-SELECT * FROM clan;
-
-"""
-
-data = cur.execute(query).fetchall()
-
-for d in data:
-    print(d)
 
 
 clanovi = []
@@ -41,10 +31,10 @@ while running:
     if akcija == 1:
        clanovi.append(unos_clana(len(clanovi)+1))
 
-       query = """ 
+       query = f""" 
 
            INSERT INTO clan (ime, prezime, id_instrumenta)
-           VALUES (f"{clanovi[len(clanovi)-1].ime}", f"{clanovi[len(clanovi)-1].prezime}", f"{clanovi[len(clanovi)-1].instrument}")
+           VALUES ("{clanovi[len(clanovi)-1].ime}", "{clanovi[len(clanovi)-1].prezime}", "{clanovi[len(clanovi)-1].instrument}")
 
            """
        cur.execute(query)
