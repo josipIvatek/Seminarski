@@ -39,11 +39,23 @@ while running:
            """
        cur.execute(query)
        con.commit()
+       
     elif akcija == 2:
         svirke.append(unos_svirke(len(svirke)+1))
         ukupna_zarada = ukupna_zarada + svirke[len(svirke)-1].cijena
+
     elif akcija == 3:
-        ispis_svih_clanova(clanovi)
+        query = """ 
+
+            SELECT ime, prezime, naziv  FROM clan
+            LEFT JOIN instrument ON clan.id_instrumenta = instrument.id
+        ;
+
+        """
+        data = cur.execute(query).fetchall()
+        for d in data:
+            print(d)
+
     elif akcija == 4:
         ispis_svih_svirki(svirke)
     elif akcija == 5:
