@@ -3,16 +3,10 @@ import sqlite3
 con = sqlite3.connect("faks.db")
 cur = con.cursor()
 
-query = """ 
+query = """ UPDATE blagajna
+SET ukupna_zarada='10'
+WHERE id_racuna=1;
+                 """
+cur.execute(query)
+con.commit()
 
-   SELECT ukupna_zarada FROM blagajna 
-;
-
-"""
-
-data = cur.execute(query).fetchall()
-uzarada = data + svirke[len(svirke) - 1].cijena
-
-
-for d in data:
-    print(d)

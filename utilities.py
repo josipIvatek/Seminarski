@@ -38,7 +38,7 @@ def unos_datuma(poruka):
                 dan = int(input(poruka))
                 mjesec = int(input(f'Unesite mjesec svirke: '))
                 godina = int(input(f'Unesite godinu svirke: '))
-                datum = date(godina, mjesec, dan)
+                datum = date(godina, mjesec, dan).strftime("%d.%m.%Y.")
 
             except ValueError as e:
                 print(e)

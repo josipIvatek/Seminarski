@@ -1,6 +1,6 @@
 from utilities import unos_intervala
 from clan import unos_clana, ispis_svih_clanova
-from svirka import unos_svirke, ispis_svih_svirki
+from svirka import unos_svirke
 import sqlite3
 
 
@@ -10,8 +10,6 @@ cur = con.cursor()
 
 clanovi = []
 svirke = []
-query2 = " SELECT ukupna_zarada FROM blagajna"
-zarada = cur.execute(query2).fetchall()
 
 
 
@@ -55,8 +53,9 @@ while running:
 
         # privući vrijednost ukupne zarade iz baze podataka
         query2 = " SELECT ukupna_zarada FROM blagajna WHERE id_racuna = 1"
-        zarada = cur.execute(query2).fetchall()
-        uzarada = zarada + svirke[len(svirke) - 1].cijena
+        zarada = cur.execute(query2).fetchone()[0]
+        int_zarada = int(zarada)
+        uzarada = int_zarada + svirke[len(svirke) - 1].cijena
 
         #dodavanje nove vrijednosti ukupne zarade u bazu podataka
         query3 = f"""
@@ -72,7 +71,7 @@ while running:
         # ispis svih članova spremljenih u bazu podataka
         query = """ 
         
-            SELECT ime || ' ' || prezime || ' ' || naziv  FROM clan
+            SELECT ime, prezime, naziv  FROM clan
             LEFT JOIN instrument ON clan.id_instrumenta = instrument.id;
             
         """
