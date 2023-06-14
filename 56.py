@@ -5,11 +5,14 @@ cur = con.cursor()
 
 query = """ 
 
-SELECT * FROM clan;
+   SELECT ukupna_zarada FROM blagajna 
+;
 
 """
 
 data = cur.execute(query).fetchall()
+uzarada = data + svirke[len(svirke) - 1].cijena
+
 
 for d in data:
     print(d)
