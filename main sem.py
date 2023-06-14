@@ -1,20 +1,21 @@
 from utilities import unos_intervala
 from clan import unos_clana, ispis_svih_clanova
 from svirka import unos_svirke, ispis_svih_svirki
-from instrument import Instrument
+import sqlite3
+
+fd = open('tablice.sql', 'r')
+sqlFile = fd.read()
+fd.close()
+sqlCommands = sqlFile.split(';')
+con = sqlite3.connect("faks.db")
+cur = con.cursor()
+for command in sqlCommands:
+    con.execute(command)
+    con.commit()
 
 
 clanovi = []
 svirke = []
-instrumenti = [
-        Instrument('Prim'),
-        Instrument('Basprim'),
-        Instrument('Harmonika'),
-        Instrument('Bas'),
-        Instrument('Bugarija'),
-        Instrument('Bubanj'),
-]
-
 blagajna = 0
 ukupna_zarada = 0
 
