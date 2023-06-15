@@ -185,7 +185,7 @@ while running:
         cur.execute(query)
         con.commit()
 
-        print(f'{stanje_blagajne}')
+        print(f'Stanje blagajne: {stanje_blagajne}')
 
     elif akcija == 7:
         running = False
